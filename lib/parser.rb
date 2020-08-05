@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require_relative './file_not_found'
+
 class Parser
   def initialize(path)
-    raise(FileNotFound, path) unless File.exist?(path)
+    raise(FileNotFound, path) if path.nil? || !File.exist?(path)
 
     @path = File.read(path)
   end

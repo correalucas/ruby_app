@@ -12,6 +12,13 @@ RSpec.describe Parser do
         FileNotFound, 'No such file or directory: some/path/to/file.log'
       )
     end
+
+    it do
+      expect { Parser.new(nil) }.to raise_error(
+        FileNotFound, 'No such file or directory: '
+      )
+    end
+
     it { is_expected.to be_an_instance_of Parser }
     it { is_expected.to respond_to :parse }
   end

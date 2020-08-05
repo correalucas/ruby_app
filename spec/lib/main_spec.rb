@@ -8,7 +8,6 @@ RSpec.describe Main do
   describe '.initialize' do
     it { expect { Main.new }.to raise_error(ArgumentError, 'wrong number of arguments (given 0, expected 1)') }
     it { is_expected.to be_an_instance_of Main }
-    it { is_expected.to respond_to :parser }
     it { is_expected.to respond_to :execute }
   end
 

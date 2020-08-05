@@ -37,6 +37,6 @@ RSpec.describe Visit do
       )
     end
     it { expect(subject.add('wiley_weimann@hessel.io')).to be_an_instance_of Array }
-    it { expect(subject.add('crystal@sporer-torp.org')).to change(subject.ips, :size).by(1) }
+    it { expect { subject.add('crystal@sporer-torp.org') }.to change(subject.ips, :size).by(1) }
   end
 end
