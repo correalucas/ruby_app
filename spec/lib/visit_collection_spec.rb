@@ -47,8 +47,6 @@ RSpec.describe VisitCollection do
       visit
     end
 
-
-
     it { expect { subject.add }.to raise_error(ArgumentError, 'wrong number of arguments (given 0, expected 1)') }
     it { expect(subject.add(visit1)).to be_an_instance_of Array }
     it { expect { subject.add(visit2) }.to change(subject.all, :size).by(1) }
@@ -57,7 +55,6 @@ RSpec.describe VisitCollection do
       before { subject.add(visit2) }
       it { expect { subject.add(visit2) }.to change(subject.all, :size).by(0) }
     end
-
   end
 
   describe '#find_or_add' do
@@ -68,11 +65,15 @@ RSpec.describe VisitCollection do
     end
 
     it { expect(subject.find_or_add('kling.info', 'wiley_weimann@hessel.io')).to be_an_instance_of Visit }
-    it { expect { subject.find_or_add('rutherford.co', 'wiley_weimann@hessel.io') }.to change(subject.all, :size).by(1) }
+    it do
+      expect { subject.find_or_add('rutherford.co', 'wiley_weimann@hessel.io') }.to change(
+        subject.all, :size
+      ).by(1)
+    end
     context 'not add duplicated visit' do
       before { subject.find_or_add('rutherford.co', 'monte.gaylord@kreiger.org') }
       it do
-        expect { subject.find_or_add('rutherford.co', 'monte.gaylord@kreiger.org')}.to change(
+        expect { subject.find_or_add('rutherford.co', 'monte.gaylord@kreiger.org') }.to change(
           subject.all, :size
         ).by(0)
       end

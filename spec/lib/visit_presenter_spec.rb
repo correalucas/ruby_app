@@ -80,17 +80,17 @@ RSpec.describe VisitPresenter do
     let(:sorted_most_unique_page_views) { VisitPresenter.sort(subject.most_unique_page_views) }
 
     it do
-      expect {
+      expect do
         VisitPresenter.print(sorted_most_page_views) { |url, views| print "#{url} #{views} views\n" }
-      }.to output(
+      end.to output(
         /kling.info 3 views\nlueilwitz.info 2 views\nmarks.net 1 views/
       ).to_stdout
     end
 
     it do
-      expect {
+      expect do
         VisitPresenter.print(sorted_most_unique_page_views) { |url, views| print "#{url} #{views} unique views\n" }
-      }.to output(
+      end.to output(
         /lueilwitz.info 2 unique views\nmarks.net 1 unique views\nkling.info 1 unique views/
       ).to_stdout
     end
