@@ -13,11 +13,10 @@ RSpec.describe Parser do
       )
     end
     it { is_expected.to be_an_instance_of Parser }
+    it { is_expected.to respond_to :parse }
   end
 
   describe '#parse' do
-    it { is_expected.to respond_to :parse }
-
     context 'parse without block' do
       subject do
         parser = Parser.new('./spec/fixtures/webserver.log')
