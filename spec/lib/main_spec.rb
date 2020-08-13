@@ -14,5 +14,6 @@ RSpec.describe Main do
   describe '#execute' do
     it { expect { subject.execute }.to output(/most page views/).to_stdout }
     it { expect { subject.execute }.to output(/most unique page views/).to_stdout }
+    it { expect { subject.execute }.to output(/average page views/).to_stdout }
   end
 end

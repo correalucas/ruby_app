@@ -22,6 +22,9 @@ class Main
     print "\n\nmost unique page views\n"
     VisitPresenter.print(most_unique_page_views) { |url, views| print "#{url} #{views} unique views\n" }
 
+    print "\n\naverage page views\n"
+    VisitPresenter.print(visit_presenter.average_page_views) { |url, views| print "#{url} average: #{views} views\n" }
+
     false
   end
 
